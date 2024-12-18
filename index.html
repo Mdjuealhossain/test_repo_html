@@ -1,20 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tailwind JS App</title>
-  <link href="dist/styles.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100 p-6">
-  <div class="max-w-lg mx-auto">
-    <h1 class="text-3xl font-bold text-center mb-4">Welcome to My Tailwind CSS App</h1>
-    <p class="text-center mb-4">This is a simple HTML, JavaScript, and Tailwind CSS app.</p>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="/dist/output.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div id="app" class="pt-[7.5rem] relative">
+            <div class="max-w-3xl mx-auto flex px-4 flex-col md:flex-row items-center md:gap-16 gap-6 md:mb-24 mb-12">
+                <div class="md:w-1/2">
+                    <img id="productImage" src="/assets/images/lg-a 3 (3).png" alt="purple" />
+                </div>
+                <div class="md:w-1/2">
+                    <h1 class="text-3xl font-semibold mb-3 text-center md:text-start">Classy Modern Smart watch</h1>
+                    <div class="flex items-center gap-2 border-secondary_main pb-1 md:mb-5 mb-2">
+                        <div class="flex items-center gap-1">
+                            <img src="/assets/icons/star-fill.svg" alt="starfill" class="h-4 w-4" />
+                            <img src="/assets/icons/star-fill.svg" alt="starfill" class="h-4 w-4" />
+                            <img src="/assets/icons/star-fill.svg" alt="starfill" class="h-4 w-4" />
+                            <img src="/assets/icons/star-halffill.svg" alt="starfill" class="h-4 w-4" />
+                            <img src="/assets/icons/starll-lined.svg" alt="starfill" class="h-4 w-4" />
+                        </div>
+                        <p class="text-sm text-secondary">(2 Reviews)</p>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <h3 class="text-xl">$99.00</h3>
+                        <h2 class="text-2xl text-secondary_light">$79.00</h2>
+                    </div>
+                    <p class="text-lg text-secondary md:py-5 py-2">I must explain to you how all this mistaken idea of denoun cing ple praising pain was born and I will give you a complete account of the system, and expound the actual teaching.</p>
 
-    <button id="clickBtn" class="bg-blue-500 text-white px-4 py-2 text-6xl rounded">Click Me</button>
-    <p id="message" class="mt-4 text-center text-lg text-gray-700 hidden">Button Clicked!</p>
-  </div>
+                    <div class="flex items-center gap-10 md:mb-5 py-2">
+                        <div>
+                            <p class="text-sm text-secondary">Type</p>
+                            <p class="text-base font-semibold">Watch</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-secondary">Model Number</p>
+                            <p class="text-base font-semibold">Model Number</p>
+                        </div>
+                    </div>
 
-  <script src="script.js"></script>
-</body>
+                    <div class="md:mb-5 mb-3">
+                        <p class="text-lg font-semibold mb-3">Band Color</p>
+                        <div class="flex items-center gap-3" id="colorSelector">
+                            <!-- Color options will go here -->
+                        </div>
+                    </div>
+
+                    <div class="md:mb-5 mb-3">
+                        <p class="text-lg font-semibold mb-3">Wrist Size</p>
+                        <div class="flex items-center gap-3 flex-wrap" id="sizeSelector">
+                            <!-- Size options will go here -->
+                        </div>
+                    </div>
+
+                    <div class="mb-5 flex items-center justify-center md:justify-start gap-3">
+                        <div class="flex items-center">
+                            <button id="decreaseButton" class="px-2 py-1.5 border border-divider rounded-l cursor-pointer">
+                                <img src="/assets/icons/minus.svg" alt="minus" class="w-5 h-6" />
+                            </button>
+                            <div id="count" class="px-[1.625rem] w-16 py-1.5 border-t border-b border-divider">1</div>
+                            <button id="increaseButton" class="px-2 py-1.5 border border-divider rounded-r cursor-pointer">
+                                <img src="/assets/icons/plus.svg" alt="plus" class="h-6 w-5" />
+                            </button>
+                        </div>
+                        <button id="addToCart" class="bg-secondary_light border-secondary_light text-white font-semibold cursor-pointer px-[1.125rem] py-2 leading-5 text-sm rounded border">Add to Cart</button>
+                        <img src="/assets/icons/heart.svg" alt="alt" class="h-auto w-auto" />
+                    </div>
+                </div>
+            </div>
+            <!-- checkout -->
+            <div class="absolute -bottom-20 left-1/2">
+                <button id="checkout" class="hidden bg-warning_main rounded-full font-semibold cursor-pointer text-black py-2 leading-5 text-sm border-warning_main px-[1.125rem]">
+                    Checkout
+                    <span class="bg-white py-.5 px-1.5 ml-2 rounded">0</span>
+                </button>
+            </div>
+            <!-- Cart Modal -->
+            <div id="cartModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40 flex items-center justify-center">
+                <div id="modal-container" class="bg-white p-11 rounded-[1.25rem] shadow-lg w-[40.688rem] z-50">
+                    <h2 class="text-2xl font-semibold mb-4">Your Cart</h2>
+                    <table class="bg-white rounded-lg min-w-full">
+                        <thead>
+                            <tr class="text-center border-b border-divider">
+                                <th class="py-1.5 text-sm text-start">Item</th>
+                                <th class="px-4 py-1.5 text-sm">Color</th>
+                                <th class="px-4 py-1.5 text-sm">Size</th>
+                                <th class="px-4 py-1.5 text-sm">Qnt</th>
+                                <th class="pr-1 py-1.5 text-end text-sm">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartTable">
+                            <!-- Cart items will be listed here -->
+                        </tbody>
+                        <tr>
+                            <td class="pr-1 py-5 font-semibold" colspan="3">Total</td>
+                            <td id="totalQuantity" class="pr-1 py-5 font-semibold text-center text-sm">0</td>
+                            <td id="totalPrice" class="pr-1 py-5 font-semibold text-end text-lg">$0</td>
+                        </tr>
+                    </table>
+                    <div class="flex justify-end gap-6 items-center mt-4">
+                        <button id="continue-shopping" class="font-semibold cursor-pointer px-[1.125rem] py-2 leading-5 text-sm rounded border border-divider">Continue Shopping</button>
+                        <button id="final-checkout" class="bg-secondary_light border-secondary_light text-white font-semibold cursor-pointer px-[1.125rem] py-2 leading-5 text-sm rounded border">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./app.js"></script>
+    </body>
 </html>
