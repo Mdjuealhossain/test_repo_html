@@ -6,10 +6,10 @@
 .pnp.js
 
 # Ignore VSCode settings folder
-# .vscode/
+.vscode/
 
 # Ignore Prettier config file
-# .prettierrc
+.prettierrc
 
 # testing
 /coverage
